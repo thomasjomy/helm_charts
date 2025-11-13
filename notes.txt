@@ -1,0 +1,56 @@
+Helm chart is a set of file that represents kubernetes resources.
+
+> helm install <some-chart>
+
+Chart.yaml
+ Containes information about chart, version,dependencies
+
+Values.yaml
+ Contains predefined values. These values can be overriden from command line.
+
+ Charts folder contains the dependencies
+
+ templates
+  Contains the templates which are passed through the template engine. These templates incorporte the values from Values.yaml
+
+> helm version
+
+> helm create demo
+> helm install demo --dry-run
+> helm install demo
+
+> helm show values
+Show all the values in Values.yaml
+
+
+
+Ovrride values using file
+
+> helm install demo example -f newValues.yaml --dry-run
+
+Benefits of templates
+ Reusablility - Write once, use anywhere
+ Maintainable - Only the values files need to be updated.
+
+
+Helm templating language
+ Based on GO templating language 
+ Directives are denoted by double curly braces. {{object}}
+
+ {{Values.image.registry}}
+
+ Chart can invoke conditionals and methods
+
+{{if .Values.SecurityContext.enabled}}
+
+Charts can used pipelining
+ {{ .Values.firstOne |quote }}
+
+
+
+
+
+
+
+
+
